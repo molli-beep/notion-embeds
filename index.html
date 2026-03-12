@@ -250,6 +250,40 @@
       .intro-body { font-size: 13.5px; }
       .cta-heading { font-size: 17px; }
     }
+
+    /* ---- DARK MODE ---- */
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --color-bg: transparent;
+        --color-card: #FFFFFF;
+        --color-text: #E8E0DA;
+        --color-text-soft: #B0A69D;
+        --color-accent: #D4979A;
+        --color-accent-hover: #E0AAAD;
+        --color-accent-light: #f4b4a8;
+        --color-border: rgba(244, 180, 168, 0.25);
+        --color-link: #D4979A;
+        --color-decor: rgba(197, 221, 226, 0.35);
+      }
+
+      .intro-heading,
+      .cta-heading {
+        color: var(--color-accent);
+      }
+
+      .cta-button {
+        color: #1F1F1F;
+        background: var(--color-accent);
+      }
+
+      .cta-button:hover {
+        background: var(--color-accent-hover);
+      }
+
+      .photo-frame img {
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+      }
+    }
   </style>
 </head>
 <body>
