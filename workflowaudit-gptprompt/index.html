@@ -19,21 +19,19 @@
       --vm-radius:       6px;
       --vm-gap:          32px;
     }
-    @media (prefers-color-scheme: dark) {
-      :root {
-        --vm-text:         #f5ebe8;
-        --vm-text-soft:    #c4b0ac;
-        --vm-accent:       #ecd5cf;
-        --vm-accent-hover: #f5ebe8;
-        --vm-rule:         #3d2c2c;
-        --vm-btn-ghost-bg: #2a1f1f;
-      }
-      body { background: #000; }
-      .vm-btn-primary { color: #1a1010; }
-      .vm-btn-ghost:hover { background: #3d2c2c; }
-      .vm-social-link:hover { background: #2a1f1f; }
-      .vm-photo { box-shadow: 4px 4px 0 #3d2c2c; }
+    html.dark {
+      --vm-text:         #f5ebe8;
+      --vm-text-soft:    #c4b0ac;
+      --vm-accent:       #ecd5cf;
+      --vm-accent-hover: #f5ebe8;
+      --vm-rule:         #3d2c2c;
+      --vm-btn-ghost-bg: #2a1f1f;
     }
+    html.dark body { background: #191919; }
+    html.dark .vm-btn-primary { color: #1a1010; }
+    html.dark .vm-btn-ghost:hover { background: #3d2c2c; }
+    html.dark .vm-social-link:hover { background: #2a1f1f; }
+    html.dark .vm-photo { box-shadow: 4px 4px 0 #3d2c2c; }
     body {
       margin: 0;
       background: transparent;
@@ -367,5 +365,37 @@
     </nav>
   </footer>
 </div>
+<script>
+(function() {
+  function isDark() {
+    // Check if matchMedia reports dark
+    if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) return true;
+    // Check the background color Notion sets on the iframe body
+    var bg = getComputedStyle(document.documentElement).backgroundColor || getComputedStyle(document.body).backgroundColor;
+    if (bg && bg !== 'rgba(0, 0, 0, 0)' && bg !== 'transparent') {
+      var m = bg.match(/\d+/g);
+      if (m) {
+        var brightness = (parseInt(m[0]) * 299 + parseInt(m[1]) * 587 + parseInt(m[2]) * 114) / 1000;
+        if (brightness < 128) return true;
+      }
+    }
+    return false;
+  }
+  function apply() {
+    document.documentElement.classList.toggle('dark', isDark());
+  }
+  apply();
+  // Re-check periodically in case Notion sets the background after load
+  var checks = 0;
+  var interval = setInterval(function() {
+    apply();
+    if (++checks >= 10) clearInterval(interval);
+  }, 500);
+  // Listen for system changes
+  if (window.matchMedia) {
+    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', apply);
+  }
+})();
+</script>
 </body>
 </html>
