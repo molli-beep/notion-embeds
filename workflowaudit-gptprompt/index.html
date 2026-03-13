@@ -19,6 +19,21 @@
       --vm-radius:       6px;
       --vm-gap:          32px;
     }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --vm-text:         #f5ebe8;
+        --vm-text-soft:    #c4b0ac;
+        --vm-accent:       #ecd5cf;
+        --vm-accent-hover: #f5ebe8;
+        --vm-rule:         #3d2c2c;
+        --vm-btn-ghost-bg: #2a1f1f;
+      }
+      body { background: #000; }
+      .vm-btn-primary { color: #1a1010; }
+      .vm-btn-ghost:hover { background: #3d2c2c; }
+      .vm-social-link:hover { background: #2a1f1f; }
+      .vm-photo { box-shadow: 4px 4px 0 #3d2c2c; }
+    }
     body {
       margin: 0;
       background: transparent;
