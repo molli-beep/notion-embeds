@@ -334,18 +334,18 @@
     <div class="vm-cta">
       <p class="vm-cta-heading">Ready for the next step?</p>
       <p class="vm-cta-body">
-        This template is one piece of a complete DIY workflow audit. The full
-        template walks you through auditing your entire backend step by step, so
-        you can spot what's broken, what's redundant, and what to fix first.
+        If you're tracking your links, you're generating ideas, content, and
+        tasks constantly. The Second Brain template gives you a place to capture
+        all of it and let Zapier sort it for you automatically.
       </p>
       <div class="vm-cta-actions">
         <a
-          href="https://virtuallymolli.com/templates"
+          href="https://virtuallymolli.notion.site/Second-Brain-Brain-Dump-Automation-Template-28050460d03a80d7a6bcce69492ca1ed"
           target="_blank"
           rel="noopener noreferrer"
           class="vm-btn-primary"
         >
-          Get the Full DIY Workflow Audit
+          Get the Second Brain Template (Free)
         </a>
         <a
           href="https://virtuallymolli.com/the-game-plan-call"
@@ -384,11 +384,7 @@
 <script>
 (function() {
   function isDark() {
-    // Method 1: matchMedia
     if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) return true;
-    // Method 2: Probe the browser's system Canvas color
-    // Create a hidden element with color-scheme: light dark and background: Canvas
-    // The Canvas system color reflects the OS dark/light preference
     var probe = document.createElement('div');
     probe.style.cssText = 'position:fixed;top:-1px;left:-1px;width:1px;height:1px;color-scheme:light dark;background-color:Canvas;pointer-events:none;';
     document.body.appendChild(probe);
@@ -407,7 +403,6 @@
     document.documentElement.classList.toggle('dark', isDark());
   }
   apply();
-  // Re-check after Notion finishes rendering
   var checks = 0;
   var interval = setInterval(function() {
     apply();
